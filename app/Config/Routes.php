@@ -66,7 +66,7 @@ $routes->group('ngatmin', ['filter' => 'cektoken'], function($routes){ //cek apa
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');
 /*$routes->get('/home', 'Home::index', ['filter' => 'ceklogin']);*/
-$routes->get('/logout', 'Login::logout', ['filter' => 'cektoken']);
+$routes->get('/logout', 'Login::logoutToken', ['filter' => 'cektoken']);
 
 $routes->get('/login/token/(:any)', 'Login::prosesToken/$1');//ambil param pertama
 

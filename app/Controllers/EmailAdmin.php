@@ -16,6 +16,7 @@ class EmailAdmin extends BaseController
 
         $news = new ModelEmail();
         $opd=session()->get("id");
+       
         $json=pegawaiPerSKPD($opd);
         $json=json_decode($json,true);
         $panjang=count($json);
@@ -26,11 +27,8 @@ class EmailAdmin extends BaseController
         
         $nip=$arr;
 
-        print_r($nip);
-        //https://codeigniter4.github.io/userguide/database/query_builder.html
-        //$nip = ['197711212006041005'];
         $data['newses'] = $news->whereIn('nip', $nip )->findAll(); //ini namanya query builder
-
+       
         if(!$data['newses']){
             throw PageNotFoundException::forPageNotFound();
         }

@@ -44,38 +44,14 @@ class Login extends BaseController
 
     public function prosesToken($token)
     {
-        /*$username = $token;
-        $password = $token;
- 
-        $cek_login = $this->auth->getLogin($username, $password);
- 
-        if(!empty($cek_login)){
- 
-            session()->set("id", $cek_login['id']);
-            session()->set("username", $cek_login['username']);
-            session()->set("password", $cek_login['password']);
- 
-            
-            return redirect()->to('/ngatmin/email');
- 
-        } else {
- 
-            return redirect()->to('/login');
-         
-        }*/
-      /*  $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
-        $arr = explode(" ", $authHeader);
-
-        $token = $arr[1];*/
-
-        //$cek_login = $this->auth->$token;
+       
         $secret_key='sdvwhgef64gr782rwdb7*Juidh$3jjj';
         if(!empty($token)){
             try {
                 $decoded = JWT::decode($token, $secret_key, array('HS256'));
-                if($decoded){
-                   // echo $decoded->opd; 
+                if($decoded){   
                     session()->set("id", $decoded->opd);
+                    session()->set("namaopd", $decoded->namaopd);
                     return redirect()->to('/ngatmin/email');
                 }
             } catch (\Exception $e){
@@ -90,6 +66,12 @@ class Login extends BaseController
     {
         session()->destroy();
         return redirect()->to('/login');
+    }
+
+    public function logoutToken()
+    {
+        session()->destroy();
+        return redirect()->to('http://simasneg.kulonprogokab.go.id/simasneg/index.php');
     }
  
 }
