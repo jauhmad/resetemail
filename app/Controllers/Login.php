@@ -52,6 +52,7 @@ class Login extends BaseController
                 if($decoded){   
                     session()->set("id", $decoded->opd);
                     session()->set("namaopd", $decoded->namaopd);
+                    session()->set("level", $decoded->level);
                     return redirect()->to('/ngatmin/email');
                 }
             } catch (\Exception $e){

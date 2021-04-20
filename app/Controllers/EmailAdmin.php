@@ -15,9 +15,11 @@ class EmailAdmin extends BaseController
 	{
 
         $news = new ModelEmail();
-        $opd=session()->get("id");
-       
-        $json=pegawaiPerSKPD($opd);
+        $opd = session()->get("id");
+        $level = session()->get("level");
+
+        $json=pegawaiPerSKPD($opd, $level);
+
         $json=json_decode($json,true);
         $panjang=count($json);
         $arr=array();
@@ -29,9 +31,9 @@ class EmailAdmin extends BaseController
 
         $data['newses'] = $news->whereIn('nip', $nip )->findAll(); //ini namanya query builder
        
-        if(!$data['newses']){
+        /*if(!$data['newses']){
             throw PageNotFoundException::forPageNotFound();
-        }
+        }*/
 
 		echo view('admin_list_email', $data);
     }

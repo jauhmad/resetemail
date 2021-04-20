@@ -11,9 +11,9 @@
  
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h3>Form Login</h3>
+                <h3>Restricted Area...</h3>
                 <hr>
-                <form action="<?= base_url('login/proses') ?>" method="post">
+                <!-- <form action="<?= base_url('login/proses') ?>" method="post">
                     <div class="form-group">
                         <label for="">Username</label>
                         <input type="text" name="username" class="form-control" placeholder="Username">
@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-block btn-primary">LOGIN</button>
                     </div>
-                </form>
+                </form> -->
             </div>
         </div>
          
